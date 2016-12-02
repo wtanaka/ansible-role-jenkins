@@ -1,0 +1,23 @@
+language: ruby
+rvm:
+- 2.2
+- 2.1
+- 2.0
+- 1.9.3
+sudo: required
+services:
+- docker
+before_install:
+- sudo apt-get update -qq
+- sudo apt-get install -y ansible
+script:
+- wget -O- bit.ly/ansibletest |
+  env DOCKER_IMAGES="ubuntu:14.04 ubuntu:16.04 fedora:21 fedora:24
+  debian:8"
+  ANSIBLE_VERSIONS="1.4.4 1.6.1 1.8.4 2.1.0.0" sh
+after_failure:
+- cat role-tester-ansible-master/.kitchen/logs/*.log | grep -v '^I, '
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  slack:
+    secure: c4IARO24E0ab+K5UsD3AYFjROIWwmlkZzpYGYxrMfh+TuKaQOJ2o2GgX1u82aiG2T02TN/RdXPY08gDIICrpsbX2Ekn9/2g+ya1Ox+WsuEXoS4oDdchDj17yjGrS+GX4yhyO7Gmau9WveAfdMt8gsZeGYqYZL2mjLG7NH2dsgMt3LzCiA1nEuIe2cB0ZGzsRmkJEEN4qGUhSOpKf2inG7aQ7HW4jvbEHbs5Rp5yMgpbUhGNUUPaETIXkzQvByar6WDwbZpS1DpvViOFLiQZbDlfT9qUFNNEjjTTUn03yKlspuDrAAqCq1n/nvbOu+oEByc33KaXfrHE7MhlTp9aCzilcJDz3HLIcsonVrYQ7gYeC2jtv9tOdn1JvtOBKrDUpsMvMnBk6Mu/oxka3FfER+ZB3nd7b4BiuYuy9Qi2fXtAzadzc8FK1Zj8FjyEH9Hs9Y8gI4chjZ168g7OHYFsax+Sa5eii6HxW/bL6IBjzO5iKvYv2tBkjqeSydRL2yI0BChUn3PpcAm8BwLCTeWWVA6Qy0/KeD1XlGSlNqB/tjYyxs3S7ELLEChu63nv4ZA13reNx7UzD/fwrkhO3yFh01kt9TOnuQpXP3vXuEkm/sbENKUtKPdtXBDioIoSq0rtOoOq2ZPhssKhcn3heZUCl3KSZxAei0j3MsaBfSbk27N4=

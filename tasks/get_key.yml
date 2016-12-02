@@ -1,0 +1,8 @@
+---
+- name: download google key
+  command: >
+    wget -O /root/jenkins.io.key
+    http://pkg.jenkins-ci.org/debian-stable/jenkins.io.key
+  args:
+    creates: /root/jenkins.io.key
+  sudo: yes
