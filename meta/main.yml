@@ -6,15 +6,11 @@ galaxy_info:
   license: GPLv2
   min_ansible_version: 1.4
   platforms:
-  - name: Debian
-    versions:
-    - jessie
+#  - name: Debian
+#    versions:
+#    - jessie
   - name: Ubuntu
     versions:
-    - trusty
-    - utopic
-    - vivid
-    - wily
     - xenial
   galaxy_tags:
   - ci
