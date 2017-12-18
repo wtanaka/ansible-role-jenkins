@@ -12,6 +12,21 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - xenial
+  - name: Fedora
+    versions:
+  #  - all
+  #  - 16
+  #  - 17
+  #  - 18
+  #  - 19
+  #  - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
   galaxy_tags:
   - ci
   - deployment
