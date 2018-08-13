@@ -1,19 +1,25 @@
 language: ruby
 rvm:
 - 2.2
-- 2.1
-- 2.0
 - 1.9.3
+env:
+- DOCKER_IMAGES=ubuntu:16.04 ANSIBLE_VERSIONS=1.4.4
+- DOCKER_IMAGES=ubuntu:16.04 ANSIBLE_VERSIONS=1.6.1
+- DOCKER_IMAGES=ubuntu:16.04 ANSIBLE_VERSIONS=1.8.4
+- DOCKER_IMAGES=ubuntu:16.04 ANSIBLE_VERSIONS=2.1.0.0
+- DOCKER_IMAGES=fedora:22 ANSIBLE_VERSIONS=1.4.4
+- DOCKER_IMAGES=fedora:22 ANSIBLE_VERSIONS=1.6.1
+- DOCKER_IMAGES=fedora:22 ANSIBLE_VERSIONS=1.8.4
+- DOCKER_IMAGES=fedora:22 ANSIBLE_VERSIONS=2.1.0.0
+- DOCKER_IMAGES=fedora:27 ANSIBLE_VERSIONS=1.4.4
+- DOCKER_IMAGES=fedora:27 ANSIBLE_VERSIONS=1.6.1
+- DOCKER_IMAGES=fedora:27 ANSIBLE_VERSIONS=1.8.4
+- DOCKER_IMAGES=fedora:27 ANSIBLE_VERSIONS=2.1.0.0
 sudo: required
 services:
 - docker
-before_install:
-- sudo apt-get update -qq
-- sudo apt-get install -y ansible
 script:
-- wget -O- bit.ly/ansibletest |
-  env DOCKER_IMAGES="ubuntu:16.04 fedora:22 fedora:27"
-  ANSIBLE_VERSIONS="1.4.4 1.6.1 1.8.4 2.1.0.0" sh
+- wget -O- bit.ly/ansibletest | sh
 after_failure:
 - cat role-tester-ansible-master/.kitchen/logs/*.log | grep -v '^I, '
 notifications:
