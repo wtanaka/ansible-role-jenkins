@@ -7,7 +7,13 @@ cache:
   - $HOME/.rvm
 rvm:
 - 1.9.3
-env: []
+env:
+- ANSIBLE_VERSIONS=2.5.1 DOCKER_IMAGES=fedora:25
+- ANSIBLE_VERSIONS=2.5.1 DOCKER_IMAGES=fedora:26
+- ANSIBLE_VERSIONS=2.5.1 DOCKER_IMAGES=fedora:27
+- ANSIBLE_VERSIONS=2.5.1 DOCKER_IMAGES=fedora:28
+- ANSIBLE_VERSIONS=2.5.1 DOCKER_IMAGES=fedora:29
+- ANSIBLE_VERSIONS=2.5.1 DOCKER_IMAGES=ubuntu:16.04
 services: docker
 script: 'wget -O- bit.ly/ansibletest | sh -x; '
 after_failure:
