@@ -6,10 +6,10 @@
   register: jenkins_key_result
   changed_when: False
 
-- name: write jenkins ppa key to /root
-  command: >
-    gpg --output /root/jenkins_ppa.gpg
-        --export 43D3A9F60C58A7169778E6FB8771ADB0816950D8
-  args:
-    creates: /root/jenkins_ppa.gpg
-  changed_when: False
+#- name: write jenkins ppa key to /root
+#  command: >
+#    gpg --output /root/jenkins_ppa.gpg
+#        --export 43D3A9F60C58A7169778E6FB8771ADB0816950D8
+#  args:
+#    creates: /root/jenkins_ppa.gpg
+#  changed_when: False
