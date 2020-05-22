@@ -5,6 +5,7 @@
     https://pkg.jenkins.io/debian-stable/jenkins.io.key
   register: jenkins_key_result
   changed_when: False
+  sudo: yes
 
 #- name: write jenkins ppa key to /root
 #  command: >
@@ -12,4 +13,5 @@
 #        --export 43D3A9F60C58A7169778E6FB8771ADB0816950D8
 #  args:
 #    creates: /root/jenkins_ppa.gpg
+#  sudo: yes
 #  changed_when: False
